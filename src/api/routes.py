@@ -33,9 +33,22 @@ def get_all_planets():
 
 @api.route('/addfavoriteplanet/<int:id>/', methods=['POST'])
 def add_planet(id):
-    planet_query = Planets.query.filter_by(id)
+    planet_query = Planets.query.get(id)
     favourite_planet = Favorite_Planets(planet_name=planet_query['planet_name'])
     db.session.add(favourite_planet)
+    db.session.commit()
+
+    respuesta = {
+        "message": "favorito agregado exitosamente"
+    }
+
+    return jsonify(respuesta), 200
+
+@api.route('/addfavoritecharacter/<int:id>/', methods=['POST'])
+def add_character(id):
+    character_query = Characters.query.get(id)
+    favourite_character = Characters_Favorites(character_name=character_query['character_name'])
+    db.session.add(favourite_character)
     db.session.commit()
 
     respuesta = {
