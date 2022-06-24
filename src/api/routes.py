@@ -34,7 +34,7 @@ def get_all_planets():
 @api.route('/addfavoriteplanet/<int:id>/', methods=['POST'])
 def add_planet(id):
     planet_query = Planets.query.filter_by(id)
-    favourite_planet = Characters_Favorites(planet_name=planet_query['planet_name'])
+    favourite_planet = Favorite_Planets(planet_name=planet_query['planet_name'])
     db.session.add(favourite_planet)
     db.session.commit()
 
