@@ -67,6 +67,9 @@ public/
 !.env.example
 .now
 
+#ignore migrations
+migrations/
+
 # backend stuff
 .venv
 database.database
